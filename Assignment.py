@@ -19,7 +19,7 @@ class Ideal_Data_PointArgumentsException(Exception):
     '''
     pass
 
-class Notion_Of_Function():
+class Node_Function():
     '''
     Abstract class. Represents function with x and y data
     '''
@@ -31,13 +31,13 @@ class Notion_Of_Function():
         self.x = float(x)
         self.y = float(y)
 
-class Notion_Of_Test(Notion_Of_Function):
+class Node_Test(Node_Function):
     '''
     Represents test function with x and y values.
     '''
     pass
 
-class Ideal_Data_Point(Notion_Of_Function):
+class Ideal_Data_Point(Node_Function):
     '''
     Represents ideal function with x, y values and its number
     '''
@@ -191,7 +191,7 @@ class Matching_Functions():
         with open(self.test) as f:
             for line in f.readlines()[1:]:
                 x, y = line.rstrip().split(',')
-                test = Notion_Of_Test(x, y)
+                test = Node_Test(x, y)
 
                 # Get ideal functions
                 ideal_functions = self.find_match_train(test)
@@ -206,7 +206,7 @@ class Matching_Functions():
     def find_match_train(self, test):
         '''
         Finds matching training and ideal functions
-        Parameter test: Notion_Of_Test
+        Parameter test: Node_Test
         :returns: list of 4 Ideal_Data_Point objects
         '''
         # Get corresponding train and ideal functions
@@ -239,7 +239,7 @@ class Matching_Functions():
     def get_ideal_for_test(self, test, ideal_functions):
         '''
         Chooses ideal function for test function
-        Parameter test: Notion_Of_Test object
+        Parameter test: Node_Test object
         Parameter ideal_functions: List of Ideal_Data_Point objects
         :returns: Ideal_Data_Point object
         '''
